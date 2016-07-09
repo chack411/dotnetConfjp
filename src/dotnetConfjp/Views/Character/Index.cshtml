@@ -1,0 +1,36 @@
+@model List<People>
+@{
+    ViewData["Title"] = "Character Page";    
+}
+
+<div id="message">
+    <h1>dotnetConf 2016 meets SWAPI</h1>
+</div>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        @for (var p=0; p<3; p++)
+        {
+            <div class="item @(p==0 ? "active" : "")">
+                <img src="~/images/@(Model[p].name).png" alt="@Model[p].name" class="img-responsive" />
+                <div class="carousel-caption">
+                    <div style="font-size: 250%">@(Model[p].name)</div>
+                    <div>Born in Year: @(Model[p].birth_year)</div>
+                </div>
+            </div>
+        }
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
